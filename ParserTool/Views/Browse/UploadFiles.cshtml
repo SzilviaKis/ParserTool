@@ -1,0 +1,64 @@
+﻿@model ParserTool.Models.PathViewModel
+
+@{
+    ViewBag.Title = "Browsing";
+}
+
+<div class="textpanel">
+
+    @using (Html.BeginForm("UploadZipFile", "Browse", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <h5 class="text-danger">BROWSING IN YOUR FOLDERS</h5>
+        <hr class="border-white" />
+        @*<div class="form-check" id="checkbox">
+            @Html.LabelFor(model => model.checkboxJS)
+            @Html.CheckBoxFor(model => model.checkboxJS, Model.checkboxJS = true)
+            @Html.ValidationMessageFor(model => model.checkboxJS)<br />
+
+            @Html.LabelFor(model => model.checkboxCSS)
+            @Html.CheckBoxFor(model => model.checkboxCSS, Model.checkboxCSS = true)
+            @Html.ValidationMessageFor(model => model.checkboxCSS)<br />
+
+            @Html.LabelFor(model => model.checkboxHTML)
+            @Html.CheckBoxFor(model => model.checkboxHTML, Model.checkboxHTML = true)
+            @Html.ValidationMessageFor(model => model.checkboxHTML)<br />
+
+            @Html.LabelFor(model => model.checkboxSQL)
+            @Html.CheckBoxFor(model => model.checkboxSQL, Model.checkboxSQL = true)
+            @Html.ValidationMessageFor(model => model.checkboxSQL)<br />
+        </div>*@
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group col">
+            <h5>[ UPLOAD Z!P FILE ]</h5>
+
+            <input type="file" name="zip" id="fileUpload" placeholder="Please select the file" style="width:100%" />
+            <hr />
+            <input id="btnUploadFile" type="submit" value="Z!P UPLOAD" class="btn btn-danger" style="width:100%" />
+            <div id="message"></div>
+            <br />
+            <h5 style="position:center">[ OR TYPE PATHWAY ]</h5>
+
+        </div>
+    }
+    @using (Html.BeginForm("UploadFilesFromTextBox", "Browse", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group col">
+            @Html.EditorFor(model => model.Pathway, "", new { @type = "textbox" })
+            @Html.ValidationMessageFor(model => model.Pathway, "", new { @class = "text-danger" })
+            <hr />
+
+
+
+            <input type="submit" value="GO!" class="btn btn-danger" style="width:100%" />
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-danger">
+                @ViewBag.UploadStatus
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>FrontEnd_0900_Zsiga</title>
+    <link rel="stylesheet" type="text/css" href="css/FrontEnd_0900_Zsiga.css">
+    
+</head>
+<body>
+    <div id="main">
+        <div id="left">
+            <h1 class="title">Zsiga <br>tornáztató app</h1>
+            <h2 class="menu">Vezérlés</h2>
+            <p class="moving">Csodálkozás</p>
+            <form id="parts">
+                <input type="range" id="wondering" name="points" min="10" max="30" value="10" class="slider">
+                <hr />
+                <p class="moving">Bal kéz</p>
+                <input type="range" id="lh" name="points" min="0" max="90" value="45" class="slider">
+                <hr />
+                <p class="moving">Jobb kéz</p>
+                <input type="range" id="rh" name="points" min="0" max="90" value="45" class="slider">
+                <hr />
+                <p class="moving">Bal láb</p>
+                <input type="range" id="lf" name="points" min="0" max="90" value="45" class="slider">
+                <hr />
+                <p class="moving">Jobb láb</p>
+                <input type="range" id="rf" name="points" min="0" max="90" value="45" class="slider">
+                <hr>
+                <p class="moving">Szeme színe</p>
+                <input type="radio" name="eyes" id="black" value="black" checked="checked"><label class="moving" for="black">fekete</label><br>
+                <input type="radio" name="eyes" id="blue" value="blue"><label class="moving" for="blue">kék</label>
+                <hr />
+                <p class="moving">Ruha színe</p>
+                <select id="clothes">
+                    <option value="white">fehér</option>
+                    <option value="yellow">sárga</option>
+                    <option value="cyan">cián</option>
+                    <option value="red">vörös</option>
+                </select>
+                <br>
+
+                <br>
+                <input type="checkbox" id="socks" checked="checked"><label class="moving">zokni</label>
+                <br>
+
+                <br>
+                <button type="button" id="reset">Alaphelyzet</button>
+            </form>
+        </div>
+
+        <div id="right">
+            <div id="head">
+                <div class="eye"></div>
+                <div class="eye"></div>
+                <div class="mouth" id="mouth"></div>
+            </div>
+
+            <div id="body"></div>
+            <div id="belt"></div>
+            <div id="left-arm"></div>
+            <div id="right-arm"></div>
+            <div id="left-leg"><div class="socks"></div></div>
+            <div id="right-leg"> <div class="socks"></div></div>
+        </div>
+    </div>
+
+    <script src="js/FrontEnd_0900_Zsiga.js"></script>
+
+</body>
+</html>

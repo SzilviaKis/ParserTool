@@ -1,0 +1,181 @@
+﻿/*Zsiga nincs jobb középen*/
+/*a csuszka gombja nem színeződik kékre*/
+
+body,
+html {
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: smaller;
+    color: white;
+}
+
+.parts {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 15px;
+    background: blue;
+    border-radius: 50%;
+    margin: auto;
+    transition: all 0.3s ease
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+#left {
+    flex-grow: initial;
+    left: 0;
+    width: 270px;
+    padding-left: 25px;
+    padding-right: 25px;
+    box-sizing: border-box;
+    background: #264750;
+    text-align: center;
+}
+
+#right {
+    right: 0;
+    height: 100%;
+    width: auto;
+    min-width: 1000px;
+    display: inline-block;
+    box-sizing: border-box;
+    flex: 1;
+    background: #c42f59;
+    padding-top: 20px;
+}
+
+hr {
+    border-color: midnightblue;
+    padding: 0%;
+    margin: 5%;
+}
+
+.slider {
+    height: 10px;
+    background: lightgray;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 30px;
+    width: 15px;
+    border-radius: 0px 0px 5px 5px;
+    background-color: blue;
+    cursor: pointer; 
+}
+
+#head {
+    position: absolute;
+    padding-top: 20px;
+    left: 49%;
+    margin: 0;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: white;
+}
+
+.eye {
+    position: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: black;
+    float: left;
+    box-sizing: content-box;
+    margin: 15px;
+}
+
+.mouth {
+    position: absolute;
+    left: 45%;
+    top: 65px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: black;
+    box-sizing: border-box;
+}
+
+#body {
+    position: absolute;
+    left: 50%;
+    top: 140px;
+    box-sizing: border-box;
+    background: white;
+    height: 150px;
+    width: 80px;
+    border-radius: 25% 25px 10px 10px;
+}
+
+#belt {
+    position: absolute;
+    z-index: 998;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    top: 255px;
+    box-sizing: border-box;
+    background: #5e3f50;
+    height: 25px;
+    width: 80px;
+}
+
+#left-arm {
+    position: absolute;
+    left: 48%;
+    top: 152px;
+    width: 20px;
+    height: 120px;
+    background: #fff;
+    border-radius: 10px 10px 0px 0px;
+    transform-origin: top;
+}
+
+#right-arm {
+    position: absolute;
+    left: 57%;
+    top: 152px;
+    width: 20px;
+    height: 120px;
+    background: #fff;
+    border-radius: 10px 10px 0px 0px;
+    transform-origin: top;
+}
+
+#left-leg {
+    position: absolute;
+    width: 20px;
+    height: 170px;
+    background: #fff;
+    left: 51%;
+    top: 300px;
+    border-radius: 10px 10px 10px 10px;
+    transform-origin: top;
+}
+
+#right-leg {
+    position: absolute;
+    width: 20px;
+    height: 170px;
+    background: #fff;
+    left: 54%;
+    top: 300px;
+    border-radius: 10px 10px 10px 10px;
+    transform-origin: top;
+}
+
+.socks {
+    position: absolute;
+    top: 150px;
+    width: 20px;
+    height: 20px;
+    border-radius: 0px 0px 10px 10px;
+    background: #264750;
+}

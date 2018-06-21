@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ParserTool.Models.PathViewModel>
+
+@{
+    ViewBag.Title = "Table";
+}
+
+<div class="container bg-black table-responsive form-group">
+
+    <h3 class="left">H!STORY</h3>
+
+    <div class="float-right btn-group btn-group-danger">
+        <button class="btn btn-light btn-lg" type="button">@Html.ActionLink("Export to PDF", "PrintPartialViewToPdf")</button>
+        <button class="btn btn-light btn-lg" type="button">@Html.ActionLink("and/or Excel", "ExportToExcel")</button>       
+    </div>
+    <br />
+
+    <table class="table textpanel text-center">
+        <tr class="bg-black, text-capitalize, text-danger">
+            <th>
+                @Html.DisplayNameFor(model => model.JsFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JsLine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HtmlFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HtmlLine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CsFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CsLine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SqlFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SqlLine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JsFile)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.JsLine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HtmlFile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HtmlLine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CsFile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CsLine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SqlFile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SqlLine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td class="btn-outline-info text-light">
+                    @Html.HiddenFor(modelItem => item.Id)
+                    @Html.ActionLink("BE RATED", "Rating", "Profil", new { Id = item.Id }, null)
+                </td>
+
+            </tr>
+        }
+    </table>
+
+    <br /><br />
+    <hr />
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+<div class="contact-map"
+     data-map-lat="47.5302849"
+     data-map-lng="19.0755086">
+</div>
+
+<div class="container row">
+
+    <div class="card col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 text-center bg-black">
+        <h2 class="card-body text-uppercase  font-weight-bold">Address</h2>
+        <p>SuperCoder Inc.<br />26 Gömb street<br />1139 Budapest Hungary</p>
+    </div>
+
+    <div class="card col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 text-center bg-black">
+        <h2 class="card-body text-uppercase font-weight-bold">Contact</h2>
+        <p>Email: info@reaktorlabs.com <br />Phone: +36 20 614 3098<br /> Skype: parserTool</p>
+    </div>
+
+    <div class="card col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 text-center bg-black">
+        <h2 class=" card-body text-uppercase font-weight-bold">Links</h2>
+        <p>
+            <a href="#!" class="text-danger">Linked!N</a><br />
+            <a href="#!" class="text-danger">Facebook</a><br />
+            <a href="#!" class="text-danger">Twitter</a><br />
+            <a href="#!" class="text-danger">YouTube</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts{
+    @*<script src="~/Scripts/GoogleMap.js"></script>*@
+    <script type="text/javascript">
+        $.getScript('https://maps.googleapis.com/maps/api/js').done(handleMapsAPILoaded);
+        Alert("eddig elfut ám");
+        function handleMapsAPILoaded() {
+            var isDraggable = !('ontouchstart' in document.documentElement);
+            var maps = [];
+            var latlngs = [];
+
+            $('.contact-map').each(function () {
+                var $this = $(this);
+                var latlng = new google.maps.LatLng($this.data('map-lat'), $this.data('map-lng'));
+
+                var map = new google.maps.Map($this[0], {
+                    zoom: 15,
+                    center: latlng,
+                    disableDefaultUI: false,
+                    scrollwheel: false,
+                    draggable: isDraggable
+                });
+
+                maps.push(map);
+                latlngs.push(latlng);
+            });
+
+            $(window).on('resize', function () {
+                $.each(maps, function (mapIndex, mapItem) {
+                    google.maps.event.trigger(mapItem, 'resize');
+                    mapItem.setCenter(latlngs[mapIndex]);
+                })
+            });
+        }
+    </script>
+}
+

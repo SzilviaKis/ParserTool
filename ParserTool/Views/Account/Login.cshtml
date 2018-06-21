@@ -1,0 +1,97 @@
+﻿@model ParserTool.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+<div class="loginpanel">
+    <h4>LOG!N</h4>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-info" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-info" })
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-info" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="L O G ! N" class="btn btn-info" style="width:100%" />
+            </div>
+        </div>
+
+        <div class="hr">
+            <h4 class="form-group">[ OR ]</h4>
+        </div>
+
+        <div class="social">
+            <a href=https://facebook.com/sharer.php?url class="facebook"></a>
+            <a href=https://twitter.com/intent/tweet?url class="twitter"></a>
+            <a href=https://plus.google.com/share?url class="googleplus"></a>
+        </div>
+
+        <div class="form-group">
+            <p>
+                @Html.ActionLink("Register as a new user", "Register")
+            </p>
+            <p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>
+        </div>
+    </div>
+    }
+</div>
+
+
+<div class="carousel-panel">
+    <h4 class="text-info">This is my very first and exciting mini project. To test your programming skills with Supercoder just upload your work as a zip or provide a pathway to it. </h4>
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../img/first.jpg" alt="try" style="width:100%">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../img/second.jpg" alt="rate" style="width:100%">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../img/third.jpg" alt="shock" style="width:100%">
+                <div class="carousel-caption">
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

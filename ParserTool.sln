@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserTool", "ParserTool\ParserTool.csproj", "{CBBE0915-280A-403A-932E-80E728A1D050}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserTool.Tests", "ParserTool.Tests\ParserTool.Tests.csproj", "{2C253505-512E-4618-BD14-0EFC6F248596}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ParserToolDatabase", "ParserToolDatabase\ParserToolDatabase.sqlproj", "{5CD567DC-59ED-4E5C-AEAA-11A3BA12D063}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBBE0915-280A-403A-932E-80E728A1D050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBBE0915-280A-403A-932E-80E728A1D050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBBE0915-280A-403A-932E-80E728A1D050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBBE0915-280A-403A-932E-80E728A1D050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C253505-512E-4618-BD14-0EFC6F248596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C253505-512E-4618-BD14-0EFC6F248596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C253505-512E-4618-BD14-0EFC6F248596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C253505-512E-4618-BD14-0EFC6F248596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD567DC-59ED-4E5C-AEAA-11A3BA12D063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD567DC-59ED-4E5C-AEAA-11A3BA12D063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD567DC-59ED-4E5C-AEAA-11A3BA12D063}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5CD567DC-59ED-4E5C-AEAA-11A3BA12D063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD567DC-59ED-4E5C-AEAA-11A3BA12D063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD567DC-59ED-4E5C-AEAA-11A3BA12D063}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCD43272-7CD7-4C47-8968-2A96B3A2668E}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.n-ware.hu/tfs/reaktorlabs
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ParserTool\\ParserTool.csproj
+		SccProjectName1 = ParserTool
+		SccLocalPath1 = ParserTool
+		SccProjectUniqueName2 = ParserTool.Tests\\ParserTool.Tests.csproj
+		SccProjectName2 = ParserTool.Tests
+		SccLocalPath2 = ParserTool.Tests
+		SccProjectUniqueName3 = ParserToolDatabase\\ParserToolDatabase.sqlproj
+		SccProjectName3 = ParserToolDatabase
+		SccLocalPath3 = ParserToolDatabase
+	EndGlobalSection
+EndGlobal

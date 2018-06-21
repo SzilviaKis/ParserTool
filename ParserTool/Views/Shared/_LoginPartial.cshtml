@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "_LoginPartial";
+}
+
+@if (Session["username"] != null)
+{
+    <ul class="nav navbar-nav navbar-right text-sm-right">
+        <li>
+            <h5 class="text-dange small">@Html.ActionLink("Welcome " + Session["username"] + "!", "UploadFiles", "Browse")</h5>
+            <button class="btn-danger btn-sm">
+                @Html.ActionLink("> > > L O G O U T > > >", "LogOut", "Account")
+            </button>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("R E G ! S T E R", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("L O G ! N", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

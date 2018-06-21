@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Parser Tool</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    @if (Session["userId"] != null)
+    {
+        <section>
+            <div class="jumbotron">
+                <nav class="navbar fixed-top bg-black">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar">WHAT K!ND OF DEVELOPER R U?</span>
+                        </button>
+                        <a href='/'>
+                            <img alt="LOGO" src="@Url.Content("~/img/logo.jpg")" class="logo navbar-brand">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+
+                        <a href="#">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("CONTACT", "Contact", "Home")</li>
+                                <li>@Html.ActionLink("BROWSING", "UploadFiles", "Browse")</li>
+                                <li>@Html.ActionLink("HISTORY", "Table", "Profil")</li>
+                                @*<li>@Html.ActionLink("GRAPH", "Graph", "Profil")</li>*@
+                            </ul>
+                        </a>
+                    </div>
+                    <div class="navbar-brand float-right">
+                        <div>@Html.Partial("_LoginPartial")</div>
+                    </div>
+                </nav>
+            </div>
+        </section>
+
+    }
+    <section class="jumbotron body-content row m-0">
+        @RenderBody()
+        <hr />
+    </section>
+
+    <section class="row m-0">
+        <footer class="text-white text-sm-center fixed-bottom bg-black">
+            <hr class="mt-0 pt-0 border-white">
+            <div class="row justify-content-center ">
+                <div class="col-md-8 col-lg-8">
+                    <p>&copy; @DateTime.Now.Year - myParserTool for Coders - All Rights Reserved</p>
+
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

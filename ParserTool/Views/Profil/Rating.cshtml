@@ -1,0 +1,109 @@
+﻿@model ParserTool.Models.PathViewModel
+
+@{
+    ViewBag.Title = "Rating";
+}
+
+<div class="progressbarpanel">
+    <h2 class="left text-danger">RAT!NG</h2>
+    <hr />
+
+    <div class="container-progress">
+
+        <div class="float-left">
+            <br />
+            <button class="btn-outline-info btn-lg" style="width:100px;" value="@Html.DisplayFor(model => model.JsFile)">
+                JS<br /><span>@Html.DisplayFor(m => m.JsFile)</span>
+            </button><hr />
+
+            <button class="btn-outline-warning btn-lg" style="width:100px;" value="@Html.DisplayFor(model => model.CsFile)">
+                CSS<br /><span>@Html.DisplayFor(m => m.CsFile)</span>
+            </button><hr />
+
+            <button class="btn-outline-success btn-lg" style="width:100px;" value="@Html.DisplayFor(model => model.HtmlFile)">
+                HTML<br /><span>@Html.DisplayFor(m => m.HtmlFile)</span>
+            </button><hr />
+
+            <button class="btn-outline-danger btn-lg" style="width:100px;" value="@Html.DisplayFor(model => model.SqlFile)">
+                SQL<br /><span>@Html.DisplayFor(m => m.SqlFile)</span>
+            </button>
+        </div>
+
+        <div class="float">
+            <label class="label" id="beginner">BEGINNER</label>
+            <label class="label" id="padawan">PADAWAN</label>
+            <label class="label" id="junior">JUNIOR</label>
+            <label class="label" id="gladiator">GLADIATOR</label>
+            <label class="label" id="jedi">JEDI</label>
+            <label class="label" id="master">MASTER</label>
+        </div>
+
+        <div class="float">
+            <div class="progress">
+                <div class="progress-bar" value="@Html.DisplayFor(model => model.JsLine)"><span>@Html.DisplayFor(m => m.JsLine)</span></div>
+            </div><hr /><br />
+
+            <div class="progress">
+                <div class="progress-bar" value="@Html.DisplayFor(model => model.CsLine)"><span>@Html.DisplayFor(m => m.CsLine)</span></div>
+            </div><hr /><br />
+
+            <div class="progress">
+                <div class="progress-bar" value="@Html.DisplayFor(model => model.HtmlLine)"><span>@Html.DisplayFor(m => m.HtmlLine)</span></div>
+            </div><hr /><br />
+
+            <div class="progress">
+                <div class="progress-bar" value="@Html.DisplayFor(model => model.SqlLine)"><span>@Html.DisplayFor(model => model.SqlLine)</span></div>
+            </div>
+        </div>
+        <hr />
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+
+            $(".progress-bar").each(function () {
+                bar = $(this).attr('value');
+
+                var scaling = 0;
+
+                var divider = (bar / Math.pow(bar, 0.760)) * 235.71;
+
+                if (bar > 0 && bar < 10000) {
+                    scaling = bar / divider;
+                    $(this).css("background-color", "#f63a0f");
+                }
+
+                else if (bar > 10000 && bar < 50000) {
+                    scaling = bar / divider;
+                    $(this).css("background-color", "#f27011");
+                }
+
+                else if (bar > 50000 && bar < 100000) {
+                    scaling = bar / divider;
+                    $(this).css("background-color", "#f2b01e");
+                }
+
+                else if (bar > 100000 && bar < 500000) {
+                    scaling = bar / divider;
+                    $(this).css("background-color", "#f2d31b");
+                }
+                else if (bar > 500000 && bar < 900000){
+                    scaling = bar / divider;
+                    $(this).css("background-color", "#86e01e");
+                }
+
+                else if (bar > 900000) {
+                    scaling = bar / divider;
+                    $(this).css("background-color", "#0feedd");
+                }
+
+                $(this).animate({ width: scaling + '%' }, 'slow');
+
+            });
+        });</script>
+}
+
+

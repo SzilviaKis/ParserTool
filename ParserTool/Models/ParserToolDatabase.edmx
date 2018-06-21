@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ParserToolDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FolderFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FolderPathId" Type="int" />
+          <Property Name="SqlFile" Type="int" />
+          <Property Name="SqlLine" Type="int" />
+          <Property Name="CsFile" Type="int" />
+          <Property Name="CsLine" Type="int" />
+          <Property Name="JsFile" Type="int" />
+          <Property Name="JsLine" Type="int" />
+          <Property Name="HtmlFile" Type="int" />
+          <Property Name="HtmlLine" Type="int" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FolderPath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="FolderPathway" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FolderFile_FolderPath">
+          <End Role="FolderPath" Type="Self.FolderPath" Multiplicity="0..1" />
+          <End Role="FolderFile" Type="Self.FolderFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FolderPath">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FolderFile">
+              <PropertyRef Name="FolderPathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FolderPath_Users">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FolderPath" Type="Self.FolderPath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FolderPath">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParserToolDatabaseModelStoreContainer">
+          <EntitySet Name="FolderFile" EntityType="Self.FolderFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FolderPath" EntityType="Self.FolderPath" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FolderFile_FolderPath" Association="Self.FK_FolderFile_FolderPath">
+            <End Role="FolderPath" EntitySet="FolderPath" />
+            <End Role="FolderFile" EntitySet="FolderFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FolderPath_Users" Association="Self.FK_FolderPath_Users">
+            <End Role="User" EntitySet="User" />
+            <End Role="FolderPath" EntitySet="FolderPath" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ParserToolDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FolderFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FolderPathId" Type="Int32" />
+          <Property Name="SqlFile" Type="Int32" />
+          <Property Name="SqlLine" Type="Int32" />
+          <Property Name="CsFile" Type="Int32" />
+          <Property Name="CsLine" Type="Int32" />
+          <Property Name="JsFile" Type="Int32" />
+          <Property Name="JsLine" Type="Int32" />
+          <Property Name="HtmlFile" Type="Int32" />
+          <Property Name="HtmlLine" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FolderPath" Relationship="Self.FK_FolderFile_FolderPath" FromRole="FolderFile" ToRole="FolderPath" />
+        </EntityType>
+        <EntityType Name="FolderPath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FolderFile" Relationship="Self.FK_FolderFile_FolderPath" FromRole="FolderPath" ToRole="FolderFile" />
+          <NavigationProperty Name="User" Relationship="Self.FK_FolderPath_Users" FromRole="FolderPath" ToRole="User" />
+          <Property Name="FolderPathway" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FolderPath" Relationship="Self.FK_FolderPath_Users" FromRole="User" ToRole="FolderPath" />
+        </EntityType>
+        <Association Name="FK_FolderFile_FolderPath">
+          <End Role="FolderPath" Type="Self.FolderPath" Multiplicity="0..1" />
+          <End Role="FolderFile" Type="Self.FolderFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FolderPath">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FolderFile">
+              <PropertyRef Name="FolderPathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FolderPath_Users">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FolderPath" Type="Self.FolderPath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FolderPath">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParserToolDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FolderFile" EntityType="Self.FolderFile" />
+          <EntitySet Name="FolderPath" EntityType="Self.FolderPath" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_FolderFile_FolderPath" Association="Self.FK_FolderFile_FolderPath">
+            <End Role="FolderPath" EntitySet="FolderPath" />
+            <End Role="FolderFile" EntitySet="FolderFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FolderPath_Users" Association="Self.FK_FolderPath_Users">
+            <End Role="User" EntitySet="User" />
+            <End Role="FolderPath" EntitySet="FolderPath" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ParserToolDatabaseModelStoreContainer" CdmEntityContainer="ParserToolDatabaseEntities">
+          <EntitySetMapping Name="FolderFile">
+            <EntityTypeMapping TypeName="ParserToolDatabaseModel.FolderFile">
+              <MappingFragment StoreEntitySet="FolderFile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FolderPathId" ColumnName="FolderPathId" />
+                <ScalarProperty Name="SqlFile" ColumnName="SqlFile" />
+                <ScalarProperty Name="SqlLine" ColumnName="SqlLine" />
+                <ScalarProperty Name="CsFile" ColumnName="CsFile" />
+                <ScalarProperty Name="CsLine" ColumnName="CsLine" />
+                <ScalarProperty Name="JsFile" ColumnName="JsFile" />
+                <ScalarProperty Name="JsLine" ColumnName="JsLine" />
+                <ScalarProperty Name="HtmlFile" ColumnName="HtmlFile" />
+                <ScalarProperty Name="HtmlLine" ColumnName="HtmlLine" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FolderPath">
+            <EntityTypeMapping TypeName="ParserToolDatabaseModel.FolderPath">
+              <MappingFragment StoreEntitySet="FolderPath">
+                <ScalarProperty Name="FolderPathway" ColumnName="FolderPathway" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ParserToolDatabaseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
